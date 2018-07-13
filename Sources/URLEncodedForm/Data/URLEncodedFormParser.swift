@@ -98,7 +98,7 @@ final class URLEncodedFormParser {
                 throw URLEncodedFormError(identifier: "malformedKey", reason: "Malformed form-urlencoded key encountered.")
             }
             stringData = Data(slices[0])
-            subKeys = try slices[1...].map({x -> Data.init(bytes: x)}).map { data -> URLEncodedFormEncodedSubKey in
+            subKeys = try slices[1...].map({x in Data.init(bytes: x)}).map { data -> URLEncodedFormEncodedSubKey in
                 if data[0] == .rightSquareBracket {
                     return .array
                 } else {
